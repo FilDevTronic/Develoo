@@ -34,6 +34,8 @@ gem 'jbuilder', '~> 2.5'
 # Use Bootstrap for styling
 gem 'bootstrap', '~> 4.0.0.beta2.1'
 gem 'jquery-rails'
+# Use Devise for user authentication
+gem 'devise'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
