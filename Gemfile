@@ -5,7 +5,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-
+require 'rake/dsl_definition'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
 # Use postgresql as the database for Active Record
@@ -37,6 +37,10 @@ gem 'jquery-rails'
 # Use Devise for user authentication
 gem 'devise'
 
+
+# Use Dotenv for local variables
+gem 'dotenv-rails', groups: [:development, :test]
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
@@ -46,6 +50,8 @@ group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
+  # Use Foreman for procfiles
+  gem 'foreman'
 end
 
 group :development do
