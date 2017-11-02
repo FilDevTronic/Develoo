@@ -31,15 +31,24 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 
 # Other Gems
+
 # Use Bootstrap for styling
 gem 'bootstrap', '~> 4.0.0.beta2.1'
 gem 'jquery-rails'
 # Use Devise for user authentication
 gem 'devise'
-
-
 # Use Dotenv for local variables
 gem 'dotenv-rails', groups: [:development, :test]
+# Use Mailboxer gem for internal messaging system
+gem 'mailboxer'
+gem 'bootstrap-will_paginate'
+gem 'will_paginate'
+# Use Gravatar for user avatars
+gem 'gravatar_image_tag'
+# Use Chosen JQuery to select users more easily
+gem 'chosen-rails'
+gem 'jquery-turbolinks'
+
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
