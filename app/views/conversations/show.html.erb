@@ -5,19 +5,23 @@
 </p>
 
 <div class="panel panel-default">
-  <div class="panel-heading">
+  <div class="panel-heading display-4">
     <%= @conversation.subject %>
   </div>
 
   <div class="panel-body">
-    <div class="messages">
-      <% @conversation.receipts_for(current_user).each do |receipt| %>
+    <div class="messages container">
+      <p><% @conversation.receipts_for(current_user).each do |receipt| %>
         <% message = receipt.message %>
 
-        <%= message.sender.name %>
-          says at <%= message.created_at.strftime("%-d %B %Y, %H:%M:%S") %>
-        <%= message.body %>
+        <p class="badge badge-pill badge-info"><%= message.body %></p>
+        <p class="font-weight-light">
+        <%= message.sender.name %> -
+        <%= message.created_at.strftime("%H:%M, %-d %b %Y" ) %>
+        </p>
+        <hr>
       <% end %>
+    </p>
     </div>
   </div>
 </div>
