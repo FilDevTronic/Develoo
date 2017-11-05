@@ -10,11 +10,11 @@ class ApplicationController < ActionController::Base
   def redirect_back_or(path)
     redirect_to request.referer || path
   end
-  
+
   protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
-    devise_parameter_sanitizer.permit(:account_update, keys: [:name])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :alias])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :alias])
   end
 end

@@ -11,7 +11,7 @@
   <tbody>
     <% @profile.each do |profile| %>
       <tr>
-        <td><%= link_to profile.user.email, profile %></td>
+        <td><%= link_to profile.user.alias, profile %></td>
         <% if current_user == profile.user %>
           <td>| <%= link_to 'Edit', edit_profile_path(profile) %></td>
         <% end %>

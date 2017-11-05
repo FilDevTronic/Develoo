@@ -1,6 +1,6 @@
-<% page_header @profile.user.name %>
+<% page_header @profile.user.alias %>
 <hr>
-<%= gravatar_image_tag(@profile.user.email, alt: @profile.user.name, class: "img-fluid rounded", gravatar: { secure: true, default: :identicon, size: 200 } ) %>
+<%= gravatar_image_tag(@profile.user.email, alt: @profile.user.alias, class: "img-fluid rounded", gravatar: { secure: true, default: :identicon, size: 200 } ) %>
 
 <p>
   <%= @profile.bio %>
