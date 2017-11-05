@@ -7,22 +7,23 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <%= link_to "FAQ", faq_path, class: "nav-link" %>
+          <%= active_link_to "FAQ", faq_path, class: "nav-link" %>
         </li>
         <li class="nav-item">
-          <%= link_to "Contact Us", contact_path, class: "nav-link" %>
+          <%= active_link_to "Contact Us", contact_path, class: "nav-link" %>
         </li>
       </ul>
-      <ul class="navbar-nav">
+      <ul class="navbar-nav d-flex justify-content-between align-items-center">
         <% if user_signed_in? %>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <%= gravatar_for current_user %>
             <%= current_user.name %>
           </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <%= link_to "Conversations", conversations_path, class: " dropdown-item" %>
-            <%= link_to "Account", edit_user_registration_path, class: " dropdown-item" %>
+          <div class="dropdown-menu align-items-center" aria-labelledby="navbarDropdown">
+            <%= link_to "Profile", profile_path(current_user), class: " dropdown-item" %>
+            <%= link_to text_with_badge("Messages", current_user.unread_inbox_count), conversations_path, class: " dropdown-item" %>
+            <%= link_to "Edit Account", edit_user_registration_path, class: " dropdown-item" %>
             <%= link_to "Sign out", destroy_user_session_path, :method => :delete, class: "dropdown-item" %>
           </div>
         <% else %>

@@ -1,5 +1,6 @@
 class PagesController < ApplicationController
   def landing
+    @profile = Profile.all
   end
 
   def contact

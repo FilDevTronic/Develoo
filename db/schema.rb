@@ -15,16 +15,6 @@ ActiveRecord::Schema.define(version: 20171102031149) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "commissions", force: :cascade do |t|
-    t.bigint "client_id"
-    t.bigint "dev_id"
-    t.decimal "price", precision: 8, scale: 2
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["client_id"], name: "index_commissions_on_client_id"
-    t.index ["dev_id"], name: "index_commissions_on_dev_id"
-  end
-
   create_table "mailboxer_conversation_opt_outs", id: :serial, force: :cascade do |t|
     t.string "unsubscriber_type"
     t.integer "unsubscriber_id"
@@ -105,8 +95,6 @@ ActiveRecord::Schema.define(version: 20171102031149) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "commissions", "users", column: "client_id"
-  add_foreign_key "commissions", "users", column: "dev_id"
   add_foreign_key "mailboxer_conversation_opt_outs", "mailboxer_conversations", column: "conversation_id", name: "mb_opt_outs_on_conversations_id"
   add_foreign_key "mailboxer_notifications", "mailboxer_conversations", column: "conversation_id", name: "notifications_on_conversation_id"
   add_foreign_key "mailboxer_receipts", "mailboxer_notifications", column: "notification_id", name: "receipts_on_notification_id"

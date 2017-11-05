@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:index]
 
-  resources :profiles
+  resources :profile, only: [:index, :edit, :update, :show, :destroy]
 
   resources :conversations, only: [:index, :show, :destroy] do
     member do

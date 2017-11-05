@@ -21,6 +21,19 @@
 //= require_tree .
 
 jQuery ->
-  $("a[rel~=popover], .has-popover").popover()
-  $("a[rel~=tooltip], .has-tooltip").tooltip()
-  $('.dropdown-toggle').dropdown()
+
+    $("a[rel~=popover], .has-popover").popover();
+    $("a[rel~=tooltip], .has-tooltip").tooltip();
+    $('.dropdown-toggle').dropdown();
+    $(function() {
+        var flashCallback;
+        flashCallback = function() {
+            return $(".alert").fadeOut();
+        };
+        $(".alert").bind('click', (function(_this) {
+            return function(ev) {
+                return $(".alert").fadeOut();
+            };
+        })(this));
+        return setTimeout(flashCallback, 2000);
+    });
