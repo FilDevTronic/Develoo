@@ -1,5 +1,4 @@
 module MessagesHelper
-
   def recipients_options(chosen_recipient = nil)
     s = ''
     User.all.each do |user|
@@ -7,5 +6,4 @@ module MessagesHelper
     end
     s.html_safe
   end
-
 end

@@ -1,0 +1,11 @@
+<% page_header @profile.user.name %>
+<hr>
+<%= gravatar_image_tag(@profile.user.email, alt: @profile.user.name, class: "img-fluid rounded", gravatar: { secure: true, default: :identicon, size: 200 } ) %>
+
+<p>
+  <%= @profile.bio %>
+</p>
+
+<% if current_user == @profile.user %>
+<%= link_to 'Edit Your Profile', edit_profile_path(@profile) %>
+<% end %>
