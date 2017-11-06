@@ -1,8 +1,6 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <strong>User:</strong>
-  <%= @commission.user %>
+  <%= @commission.user.alias %>
 </p>
 
 <p>
@@ -17,9 +15,31 @@
 
 <p>
   <strong>Price:</strong>
-  <%= @commission.price %>
+  <%= number_to_currency(@commission.price) %>
 </p>
 
+<div>
+  <p>
+    <strong>User Stories:</strong>
+  </p>
+  <ul>
+    <% @commission.user_stories.each do |story| %>
+    <li>
+      <strong>As a </strong><%= story.as_a %>, <strong>I should be able to</strong> <%= story.isbat %>, <strong>so that</strong> <%= story.so_that %>.
+      <% if current_user == story.commission.user %>
+        <%= link_to 'Edit', edit_user_story_path(story) %> |
+        <%= link_to 'Destroy', story, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <% end %>
+    </li>
+    <% end %>
+  </ul>
+</div>
+
+<hr>
+
+<p>
+  <strong>Add a new User Story</strong>
+</p>
 <%= render 'user_stories/form', user_story: @user_story, commission: @commission %>
 
 <% if current_user == @commission.user %>

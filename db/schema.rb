@@ -19,9 +19,9 @@ ActiveRecord::Schema.define(version: 20171106005842) do
     t.bigint "user_id"
     t.string "title"
     t.text "description"
+    t.decimal "price", precision: 8, scale: 2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.decimal "price", precision: 8, scale: 2
     t.index ["user_id"], name: "index_commissions_on_user_id"
   end
 

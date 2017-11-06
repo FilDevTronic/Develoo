@@ -25,12 +25,13 @@ class UserStoriesController < ApplicationController
   # POST /user_stories.json
   def create
     @user_story = UserStory.new(user_story_params)
-    @user_story.commission = Commission.find(params[:commission][:commission_id])
+    commission = Commission.find(params[:commission][:commission_id])
+    @user_story.commission = commission
 
     respond_to do |format|
       if @user_story.save
-        format.html { redirect_to @user_story, notice: 'User story was successfully created.' }
-        format.json { render :show, status: :created, location: @user_story }
+        format.html { redirect_to commission_path(commission), notice: 'User story was successfully created.' }
+        format.json { render :show, status: :created, location: @commission.user_story }
       else
         format.html { render :new }
         format.json { render json: @user_story.errors, status: :unprocessable_entity }
@@ -55,9 +56,10 @@ class UserStoriesController < ApplicationController
   # DELETE /user_stories/1
   # DELETE /user_stories/1.json
   def destroy
+    commission = @user_story.commission
     @user_story.destroy
     respond_to do |format|
-      format.html { redirect_to user_stories_url, notice: 'User story was successfully destroyed.' }
+      format.html { redirect_to commission_path(commission), notice: 'User story was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

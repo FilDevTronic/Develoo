@@ -1,3 +1,3 @@
 class UserStory < ApplicationRecord
-  belongs_to :commission, dependent: :destroy
+  belongs_to :commission
 end
