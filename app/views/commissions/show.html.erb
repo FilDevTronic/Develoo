@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @commission.user %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @commission.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @commission.description %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @commission.price %>
+</p>
+
+<%= render 'user_stories/form', user_story: @user_story, commission: @commission %>
+
+<% if current_user == @commission.user %>
+  <%= link_to 'Edit', edit_commission_path(@commission) %> |
+<% end %>
+<%= link_to 'Back', commissions_path %>

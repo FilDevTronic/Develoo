@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :user_stories
   devise_for :users, controllers: {sessions: 'users/sessions'}
 
   root 'pages#landing'
@@ -38,5 +39,7 @@ Rails.application.routes.draw do
   end
 
   resources :messages, only: [:new, :create]
+
+  resources :commissions
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

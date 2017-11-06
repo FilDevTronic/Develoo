@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>As a:</strong>
+  <%= @user_story.as_a %>
+</p>
+
+<p>
+  <strong>Isbat:</strong>
+  <%= @user_story.isbat %>
+</p>
+
+<p>
+  <strong>So that:</strong>
+  <%= @user_story.so_that %>
+</p>
+
+<p>
+  <strong>Commission:</strong>
+  <%= @user_story.commission %>
+</p>
+
+<%= link_to 'Edit', edit_user_story_path(@user_story) %> |
+<%= link_to 'Back', user_stories_path %>

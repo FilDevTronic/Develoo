@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  as_a: MyString
+  isbat: MyString
+  so_that: MyString
+  commission: one
+
+two:
+  as_a: MyString
+  isbat: MyString
+  so_that: MyString
+  commission: two
