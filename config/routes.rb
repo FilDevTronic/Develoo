@@ -29,7 +29,9 @@ Rails.application.routes.draw do
 
   resources :messages, only: [:new, :create]
 
-  resources :commissions
+  resources :commissions do
+    resources :user_stories
+  end
 
   resources :user_stories, except: [:index]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
