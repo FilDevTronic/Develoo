@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171105195636) do
+ActiveRecord::Schema.define(version: 20171106005842) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "commissions", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "title"
+    t.text "description"
+    t.decimal "price", precision: 8, scale: 2
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_commissions_on_user_id"
+  end
 
   create_table "mailboxer_conversation_opt_outs", id: :serial, force: :cascade do |t|
     t.string "unsubscriber_type"
@@ -77,6 +87,16 @@ ActiveRecord::Schema.define(version: 20171105195636) do
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
+  create_table "user_stories", force: :cascade do |t|
+    t.string "as_a"
+    t.string "isbat"
+    t.string "so_that"
+    t.bigint "commission_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["commission_id"], name: "index_user_stories_on_commission_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -96,8 +116,10 @@ ActiveRecord::Schema.define(version: 20171105195636) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "commissions", "users"
   add_foreign_key "mailboxer_conversation_opt_outs", "mailboxer_conversations", column: "conversation_id", name: "mb_opt_outs_on_conversations_id"
   add_foreign_key "mailboxer_notifications", "mailboxer_conversations", column: "conversation_id", name: "notifications_on_conversation_id"
   add_foreign_key "mailboxer_receipts", "mailboxer_notifications", column: "notification_id", name: "receipts_on_notification_id"
   add_foreign_key "profiles", "users"
+  add_foreign_key "user_stories", "commissions", on_delete: :cascade
 end

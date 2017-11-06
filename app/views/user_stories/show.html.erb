@@ -1,0 +1,8 @@
+<p>
+  <strong>As a </strong><%= @user_story.as_a %>, <strong>I should be able to</strong> <%= @user_story.isbat %>, <strong>so that</strong> <%= @user_story.so_that %>.
+</p>
+
+<% if current_user == @user_story.commission.user %>
+  <%= link_to 'Edit', edit_user_story_path(@user_story) %> |
+<% end %>
+<%= link_to 'Back', :back %>
