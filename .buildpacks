@@ -1,0 +1,8 @@
+https://github.com/heroku/heroku-buildpack-nodejs.git#v87
+https://github.com/heroku/heroku-buildpack-ruby.git#v142
+
+remote:        NPM_CONFIG_LOGLEVEL=error
+remote:        NPM_CONFIG_PRODUCTION=true
+remote:        NODE_VERBOSE=false
+remote:        NODE_ENV=production
+remote:        NODE_MODULES_CACHE=true
