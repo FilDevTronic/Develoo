@@ -1,6 +1,8 @@
 <% page_header "Commissions" %>
-<% if current_user.has_role? :admin || :dev %>
-  <p><%= link_to 'New Commission', new_commission_path, class: "btn btn-primary" %></p>
+<% if user_signed_in? %>
+  <% if current_user.has_any_role?(:admin, :dev) %>
+    <p><%= link_to 'New Commission', new_commission_path, class: "btn btn-primary" %></p>
+  <% end %>
 <% end %>
 
 <div class="container-fluid text-center">
