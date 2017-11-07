@@ -8,8 +8,6 @@ class User < ApplicationRecord
 
   validates :alias, presence: true
 
-  after_create :assign_default_role
-
   after_create :create_profile
 
   has_one :profile, dependent: :destroy
@@ -17,8 +15,4 @@ class User < ApplicationRecord
   has_many :commission, dependent: :destroy
 
   acts_as_messageable
-
-  def assign_default_role
-    add_role(:user)
-  end
 end

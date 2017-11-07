@@ -7,7 +7,9 @@ Rails.application.routes.draw do
 
   get 'cart/show'
 
-  devise_for :users, controllers: {sessions: 'users/sessions'}
+  devise_for :users, controllers: { sessions: 'users/sessions',
+                                    registrations: 'users/registrations'
+                                  }
 
   root 'pages#landing'
 
@@ -17,11 +19,19 @@ Rails.application.routes.draw do
 
   get 'pages/faq', as: 'faq'
 
-  resources :users, only: [:index]
+  resources :users, only: [ :index ]
 
-  resources :profile, only: [:index, :edit, :update, :show, :destroy]
+  resources :profile, only: [ :index,
+                              :edit,
+                              :update,
+                              :show,
+                              :destroy
+                            ]
 
-  resources :conversations, only: [:index, :show, :destroy] do
+  resources :conversations, only: [ :index,
+                                    :show,
+                                    :destroy
+                                  ] do
 
     collection do
       delete :empty_trash
@@ -35,12 +45,17 @@ Rails.application.routes.draw do
 
   end
 
-  resources :messages, only: [:new, :create]
+  resources :messages, only: [ :new,
+                               :create
+                             ]
 
   resources :commissions
 
-  resource :cart, only: [:show]
+  resource :cart, only: [ :show ]
 
-  resources :order_items, only: [:create, :update, :destroy]
+  resources :order_items, only: [ :create,
+                                  :update,
+                                  :destroy
+                                ]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
