@@ -16,13 +16,13 @@
 <hr>
 
 <%= form_for @order_item, remote: true do |f| %>
-<h4 class="text-right">Price: <span style="color: green"><%= number_to_currency @commission.price %></span></h4>
-  <div class="input-group">
+  <div class="input-group d-flex justify-content-between">
     <div class="input-group-btn">
       <%= f.hidden_field :quantity, value: 1 %>
       <%= f.hidden_field :commission_id, value: @commission.id %>
       <%= f.submit "Add to Cart", class: "btn btn-primary" %>
     </div>
+    <h4 class="text-right">Price: <span style="color: green"><%= number_to_currency @commission.price %></span></h4>
   </div>
 <% end %>
 
