@@ -12,7 +12,9 @@
     There are no items in your shopping cart.  Please <%= link_to "go back", commissions_path %> and add some items to your cart.
   </p>
 <% else %>
-  <% @order_items.each do |order_item| %>
-    <%= render 'carts/cart_row', commission: order_item.commission, order_item: order_item, show_total: true %>
-  <% end %>
+  <ul class="list-group">
+    <% @order_items.each do |order_item| %>
+      <%= render 'carts/cart_row', commission: order_item.commission, order_item: order_item, show_total: true %>
+    <% end %>
+  </ul>
 <% end %>
