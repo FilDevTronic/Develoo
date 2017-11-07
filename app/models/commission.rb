@@ -1,5 +1,5 @@
 class Commission < ApplicationRecord
   belongs_to :user
-  has_many :user_stories
-  scope :active, -> { where(hidden: false) }
+  has_many :order_items
+  default_scope :active, -> { where(hidden: false) }
 end
