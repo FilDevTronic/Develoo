@@ -1,4 +1,5 @@
 class UserStoriesController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :set_user_story, only: [:show, :edit, :update, :destroy]
 
   # GET /user_stories

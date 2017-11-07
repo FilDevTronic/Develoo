@@ -48,7 +48,8 @@ gem 'gravatar_image_tag'
 # Use Chosen JQuery to select users more easily
 gem 'chosen-rails'
 gem 'jquery-turbolinks'
-
+# Use Rolify to manage user roles, scoped authorisation
+gem 'rolify'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
