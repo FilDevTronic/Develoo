@@ -15,7 +15,5 @@ class User < ApplicationRecord
 
   has_many :commission, dependent: :destroy
 
-  has_many :user_story
-
   acts_as_messageable
 end

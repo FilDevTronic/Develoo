@@ -3,32 +3,10 @@
   <p><%= link_to 'New Commission', new_commission_path, class: "btn btn-primary" %></p>
 <% end %>
 
-<table class="table">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">User</th>
-      <th scope="col">Title</th>
-      <th scope="col">Description</th>
-      <th scope="col">Price</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @commissions.each_with_index do |commission, i| %>
-      <tr scope="row">
-        <td><%= i + 1 %></td>
-        <td><%= commission.user.alias %></td>
-        <td><%= commission.title %></td>
-        <td><%= commission.description %></td>
-        <td><%= number_to_currency(commission.price) %></td>
-        <td><%= link_to 'Show', commission, class: "btn btn-light" %></td>
-        <% if current_user == commission.user %>
-          <td><%= link_to 'Edit', edit_commission_path(commission), class: "btn btn-secondary" %></td>
-          <td><%= link_to 'Destroy', commission, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
-        <% end %>
-      </tr>
+<div class="container-fluid text-center">
+  <div class="d-flex row">
+    <% @commissions.each do |commission| %>
+      <%= render "commission_row", commission: commission, order_item: @order_item %>
     <% end %>
-  </tbody>
-</table>
+  </div>
+</div>

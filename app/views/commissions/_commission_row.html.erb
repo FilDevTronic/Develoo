@@ -1,0 +1,25 @@
+<div class="mx-auto my-4">
+  <div class="card" style="width: 15rem;">
+    <%= gravatar_image_tag(commission.user.email, alt: commission.user.alias, class: "card-img-top", gravatar: { secure: true, default: :identicon, size: 220 } ) %>
+    <div class="card-body">
+      <h4 class="card-title"><%= commission.title %></h4>
+      <p class="card-text text-left">
+        Developed by <%= link_to commission.user.alias, profile_path(commission.user) %>
+        <hr>
+        <%= commission.description %>
+      </p>
+      <p class="card-text text-right">
+        <%= number_to_currency(commission.price) %>
+      </p>
+    </div>
+    <div class="card-body">
+      <%= link_to "More details", commission, class: "card-link" %>
+      <% if current_user == commission.user or current_user.has_role? :admin %>
+        <div class="card-body">
+          <%= link_to 'Edit', edit_commission_path(commission), class: "btn btn-secondary" %>
+          <%= link_to 'Destroy', commission, method: :delete, data: { confirm: 'Are you sure?' }, class: "card-link btn btn-danger" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

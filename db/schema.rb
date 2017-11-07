@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171107031922) do
+ActiveRecord::Schema.define(version: 20171107052442) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -82,7 +82,6 @@ ActiveRecord::Schema.define(version: 20171107031922) do
 
   create_table "order_items", force: :cascade do |t|
     t.bigint "commission_id"
-    t.bigint "user_story_id"
     t.bigint "order_id"
     t.decimal "unit_price", precision: 8, scale: 2
     t.integer "quantity"
@@ -91,7 +90,6 @@ ActiveRecord::Schema.define(version: 20171107031922) do
     t.datetime "updated_at", null: false
     t.index ["commission_id"], name: "index_order_items_on_commission_id"
     t.index ["order_id"], name: "index_order_items_on_order_id"
-    t.index ["user_story_id"], name: "index_order_items_on_user_story_id"
   end
 
   create_table "order_statuses", force: :cascade do |t|
@@ -170,7 +168,6 @@ ActiveRecord::Schema.define(version: 20171107031922) do
   add_foreign_key "mailboxer_receipts", "mailboxer_notifications", column: "notification_id", name: "receipts_on_notification_id"
   add_foreign_key "order_items", "commissions"
   add_foreign_key "order_items", "orders"
-  add_foreign_key "order_items", "user_stories"
   add_foreign_key "orders", "order_statuses"
   add_foreign_key "profiles", "users"
 end
