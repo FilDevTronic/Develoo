@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  get 'order_items/create'
+
+  get 'order_items/update'
+
+  get 'order_items/destroy'
+
+  get 'cart/show'
+
   devise_for :users, controllers: {sessions: 'users/sessions'}
 
   root 'pages#landing'
@@ -29,10 +37,10 @@ Rails.application.routes.draw do
 
   resources :messages, only: [:new, :create]
 
-  resources :commissions do
-    resources :user_stories
-  end
+  resources :commissions
 
-  resources :user_stories, except: [:index]
+  resources :order_items, only: [:create, :update, :destroy]
+
+  resource :cart
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
