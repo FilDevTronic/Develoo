@@ -49,6 +49,8 @@ gem 'jquery-turbolinks'
 gem 'rolify'
 # Use Mailgun to send transactional and auth mailer
 gem 'mailgun-ruby', '~>1.1.6'
+# Webpacker for heroku
+gem 'webpacker'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
