@@ -5,6 +5,15 @@
   <% end %>
 <% end %>
 
+<div class="form-inline">
+<div class="form-group">
+<%= form_tag commissions_path, :method => 'get' do %>
+  <%= text_field_tag :search, params[:search], class: "form-control col-sm-12", placeholder: "Enter a description" %>
+  <%= submit_tag "Search", class: "btn btn-primary span" %>
+<% end %>
+</div>
+</div>
+
 <div class="container-fluid text-center">
   <div class="d-flex row">
     <% @commissions.each do |commission| %>
