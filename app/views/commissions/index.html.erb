@@ -1,33 +1,34 @@
 <% page_header "Commissions" %>
+<% if current_user.has_role? :admin || :dev %>
+  <p><%= link_to 'New Commission', new_commission_path, class: "btn btn-primary" %></p>
+<% end %>
 
-<table>
-  <thead>
+<table class="table">
+  <thead class="thead-dark">
     <tr>
-      <th>User</th>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Price</th>
+      <th scope="col">#</th>
+      <th scope="col">User</th>
+      <th scope="col">Title</th>
+      <th scope="col">Description</th>
+      <th scope="col">Price</th>
       <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
-    <% @commissions.each do |commission| %>
-      <tr>
-        <td><%= commission.user %></td>
+    <% @commissions.each_with_index do |commission, i| %>
+      <tr scope="row">
+        <td><%= i + 1 %></td>
+        <td><%= commission.user.alias %></td>
         <td><%= commission.title %></td>
         <td><%= commission.description %></td>
-        <td><%= commission.price %></td>
-        <td><%= link_to 'Show', commission %></td>
+        <td><%= number_to_currency(commission.price) %></td>
+        <td><%= link_to 'Show', commission, class: "btn btn-light" %></td>
         <% if current_user == commission.user %>
-          <td><%= link_to 'Edit', edit_commission_path(commission) %></td>
-          <td><%= link_to 'Destroy', commission, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to 'Edit', edit_commission_path(commission), class: "btn btn-secondary" %></td>
+          <td><%= link_to 'Destroy', commission, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
         <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Commission', new_commission_path %>

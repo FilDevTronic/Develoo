@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171107031740) do
+ActiveRecord::Schema.define(version: 20171107031922) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -133,10 +133,8 @@ ActiveRecord::Schema.define(version: 20171107031740) do
     t.string "as_a"
     t.string "isbat"
     t.string "so_that"
-    t.bigint "commission_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["commission_id"], name: "index_user_stories_on_commission_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -175,5 +173,4 @@ ActiveRecord::Schema.define(version: 20171107031740) do
   add_foreign_key "order_items", "user_stories"
   add_foreign_key "orders", "order_statuses"
   add_foreign_key "profiles", "users"
-  add_foreign_key "user_stories", "commissions", on_delete: :cascade
 end
