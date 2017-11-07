@@ -1,0 +1,19 @@
+<div class="container-fluid text-center">
+  <h4>Meet the Devs</h4>
+  <div class="d-flex row">
+    <% @profile.each do |profile| %>
+      <% if profile.user.has_role? :dev %>
+        <div class="mx-auto my-4">
+          <div class="card" style="width: 20rem;">
+            <%= gravatar_image_tag(profile.user.email, alt: profile.user.alias, class: "card-img-top", gravatar: { secure: true, default: :identicon, size: 310 } ) %>
+            <div class="card-body">
+              <h4 class="card-title"><%= profile.user.alias %></h4>
+              <p class="card-text"></p>
+              <%= link_to "Go to Profile", profile_path(profile) %>
+            </div>
+          </div>
+        </div>
+        <% end %>
+    <% end %>
+  </div>
+</div>
