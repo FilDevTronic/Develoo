@@ -57,4 +57,12 @@ end
 								     user: user2)
 end
 
+1.upto(2) do |i|
+  Commission.create(title: "Hidden Item #{i}",
+                    description: "You can't see me",
+                    price: 10 * i,
+                    user: user0,
+                    hidden: true)
+end
+
 puts '!Database Seeded!'
