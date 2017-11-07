@@ -1,22 +1,25 @@
-<div class="well">
-
-  <div class="row">
-    <div class="col-xs-8">
-      <h4><%= commission.title %></small></h4>
+<div class="mx-auto my-4">
+  <div class="card" style="width: 15rem;">
+    <%= gravatar_image_tag(commission.user.email, alt: commission.user.alias, class: "card-img-top", gravatar: { secure: true, default: :identicon, size: 220 } ) %>
+    <div class="card-body">
+      <h4 class="card-title"><%= commission.title %></h4>
+      <p class="card-text text-left">
+        Developed by <%= link_to commission.user.alias, profile_path(commission.user) %>
+        <hr>
+        <%= commission.description %>
+      </p>
+      <p class="card-text text-right">
+        <%= number_to_currency(commission.price) %>
+      </p>
     </div>
-    <div class="col-xs-4">
-
-      <%= form_for order_item, remote: true do |f| %>
-      <h4 class="text-right">Unit Price: <span style="color: green"><%= number_to_currency commission.price %></span></h4>
-        <div class="input-group">
-          <%= f.number_field :quantity, value: 1, class: "form-control", min: 1 %>
-          <div class="input-group-btn">
-            <%= f.hidden_field :commission_id, value: commission.id %>
-            <%= f.submit "Add to Cart", class: "btn btn-primary" %>
-          </div>
+    <div class="card-body">
+      <%= link_to "More details", commission, class: "card-link" %>
+      <% if current_user == commission.user or current_user.has_role? :admin %>
+        <div class="card-body">
+          <%= link_to 'Edit', edit_commission_path(commission), class: "btn btn-secondary" %>
+          <%= link_to 'Destroy', commission, method: :delete, data: { confirm: 'Are you sure?' }, class: "card-link btn btn-danger" %>
         </div>
       <% end %>
     </div>
-
   </div>
 </div>
