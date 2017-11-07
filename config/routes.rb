@@ -39,10 +39,8 @@ Rails.application.routes.draw do
 
   resources :commissions
 
-  resources :user_stories, except: [:index]
-
-  resource :cart, only: [:show]
-
   resources :order_items, only: [:create, :update, :destroy]
+
+  resource :cart
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

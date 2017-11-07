@@ -5,6 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
 Role.create(name: :admin)
 Role.create(name: :dev)
 Role.create(name: :client)
@@ -43,6 +44,11 @@ user4 = User.create(alias: 'Alias',
 								    password: 'password1234',
 								    password_confirmation: 'password1234')
 user4.add_role(:client)
+
+OrderStatus.create! id: 1, name: "In Progress"
+OrderStatus.create! id: 2, name: "Commissioned"
+OrderStatus.create! id: 3, name: "Paid"
+OrderStatus.create! id: 4, name: "Cancelled"
 
 1.upto(5) do |i|
 	Commission.create(title: "App #{i}",
