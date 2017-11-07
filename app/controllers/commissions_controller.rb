@@ -12,7 +12,7 @@ class CommissionsController < ApplicationController
   # GET /commissions/1
   # GET /commissions/1.json
   def show
-    @order_item = current_order.order_items.new
+    @order_item = current_order.order_items
   end
 
   # GET /commissions/new
