@@ -51,6 +51,8 @@ gem 'rolify'
 gem 'mailgun-ruby', '~>1.1.6'
 # Webpacker for heroku
 gem 'webpacker'
+# Use ActiveAdmin to manage site via GUI
+gem 'activeadmin'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
