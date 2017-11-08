@@ -53,6 +53,9 @@ gem 'mailgun-ruby', '~>1.1.6'
 gem 'webpacker'
 # Use ActiveAdmin to manage site via GUI
 gem 'activeadmin'
+# Use Stripe for payments
+gem 'stripe'
+gem 'httparty'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

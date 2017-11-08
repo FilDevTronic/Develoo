@@ -1,0 +1,18 @@
+<% page_header "Dev Settings" %>
+
+<p class="text-muted"> Here you can edit your business details </p>
+
+<h5> Payment through Stripe</h5>
+<% if @stripe_user_id.nil? %>
+  <p>If you haven't already made an account with Stripe, click the link below to get started.</p>
+  <a href="https://connect.stripe.com/oauth/authorize?response_type=code&client_id=<%= ENV.fetch('STRIPE_CLIENT_ID') %>&scope=read_write" class="stripe-connect btn btn-info mb-3"><span>Connect with Stripe</span></a>
+  <div class="col-sm-12">
+    <ul class="list">
+      <li class="small text-info">You must have an account and associate it with Develoo in order to be able to make commissions and receive payment for them.</li>
+      <li class="small text-info"> If you are seeing this and have already made an account with Stripe, and tried associating it with Develoo, an error might have occcured. If you believe this to be the case, please send a message to an admin on the site.</li>
+    </ul>
+  </div>
+<% else %>
+  <p class="text-success">Conected with Stripe!</p>
+  <p>Stripe User ID: <strong><%= @stripe_user_id %></strong></p>
+<% end %>

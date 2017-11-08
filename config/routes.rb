@@ -1,13 +1,7 @@
 Rails.application.routes.draw do
+
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  get 'order_items/create'
-
-  get 'order_items/update'
-
-  get 'order_items/destroy'
-
-  get 'cart/show'
 
   devise_for :users, controllers: { sessions: 'users/sessions',
                                     registrations: 'users/registrations'
@@ -20,6 +14,14 @@ Rails.application.routes.draw do
   get 'pages/contact', as: 'contact'
 
   get 'pages/faq', as: 'faq'
+
+  get 'pages/settings', as: 'settings'
+
+  get 'stripe/connect'
+
+  get 'charges/thankyou'
+
+  post 'charges', to: 'charges#create'
 
   resources :users, only: [ :index ]
 

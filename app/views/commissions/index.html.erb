@@ -1,14 +1,22 @@
 <% page_header "Commissions" %>
+
+<div class="mb-2">
 <% if user_signed_in? %>
   <% if current_user.has_any_role?(:admin, :dev) %>
-    <p><%= link_to 'New Commission', new_commission_path, class: "btn btn-primary" %></p>
+    <% if current_user.stripe_user_id.nil? %>
+      <h4 class="text-warning"> You must create a Stripe account before you can create and be paid for commissions </h4>
+      <%= link_to "Set up your payment", 'pages/settings' %>
+    <% else %>
+      <p><%= link_to 'New Commission', new_commission_path, class: "btn btn-primary" %></p>
+    <% end %>
   <% end %>
 <% end %>
+</div>
 
 <div class="form-inline">
 <div class="form-group">
 <%= form_tag commissions_path, :method => 'get' do %>
-  <%= text_field_tag :search, params[:search], class: "form-control col-sm-12", placeholder: "Enter a description" %>
+  <%= text_field_tag :search, params[:search], class: "form-control col-sm-12", placeholder: "Search commissions" %>
   <%= submit_tag "Search", class: "btn btn-primary span" %>
 <% end %>
 </div>

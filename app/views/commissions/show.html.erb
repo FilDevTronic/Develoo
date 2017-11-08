@@ -26,7 +26,11 @@
   </div>
 <% end %>
 
-<% if current_user == @commission.user or current_user.has_role? :admin %>
-  <%= link_to 'Edit', edit_commission_path(@commission) %> |
-<% end %>
-<%= link_to 'Back', commissions_path %>
+<%= render 'charges/single_purchase' %>
+
+<div class="my-2">
+  <% if current_user == @commission.user or current_user.has_role? :admin %>
+    <%= link_to 'Edit', edit_commission_path(@commission) %> |
+  <% end %>
+  <%= link_to 'Back', commissions_path %>
+</div>
