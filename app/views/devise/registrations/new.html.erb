@@ -54,6 +54,28 @@
     </div>
   </div>
 
+  <div class: "col-sm-4">
+     <%= f.label :role_ids, "You are signing up as a:", class: "col-sm-4 control-label" %>
+  </div>
+  <div class="col-sm-4">
+    <% count = 0 %>
+    <%= f.collection_radio_buttons(:role_ids, Role.where.not(name: :admin), :id, :name ) do |button| %>
+      <%= button.label(class: "btn btn-secondary") do %>
+        <%= button.radio_button %>
+        <%= button.text.capitalize %>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="small col-sm-4 text-muted">
+    <strong>Developers</strong> create and sell commissions.
+  </div>
+  <div class="small col-sm-4 text-muted mb-3">
+    <strong>Clients</strong> buy commissions.
+  </div>
+  <div class="small col-sm-4 text-muted mb-3">
+    Both can message other users, view profiles and search the commissions.
+  </div>
+
   <br>
 
   <div class="form-group">
