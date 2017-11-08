@@ -10,8 +10,6 @@ Role.create(name: :admin)
 Role.create(name: :dev)
 Role.create(name: :client)
 
-AdminUser.create!(email: 'admin@develoo.co', password: 'supertajnalozinka', password_confirmation: 'supertajnalozinka') if Rails.env.development?
-
 user0 = User.create(alias: 'Admin_Auxfil',
                     name: 'Filip Maslovaric',
                     email: 'filip.maslovaric@gmail.com',
@@ -74,30 +72,32 @@ OrderStatus.create! id: 3, name: "Paid"
 OrderStatus.create! id: 4, name: "Cancelled"
 
 
-Commission.create(title: "App",
+Commission.create!(title: "App",
                   description: 'An App',
 							    price: 60,
 							    user: user1)
 
-Commission.create(title: "Website",
+Commission.create!(title: "Website",
                    description: 'A Website',
 							     price: 20,
 							     user: user2)
 
-Commission.create(title: "Website",
+Commission.create!(title: "Website",
                   description: 'A Website',
 						      price: 40,
 						      user: user3)
 
-Commission.create(title: "Website",
+Commission.create!(title: "Website",
                   description: 'A Website',
                   price: 30,
                   user: user4)
 
-Commission.create(title: "Hidden Item",
+Commission.create!(title: "Hidden Item",
                   description: "You can't see me",
                   price: 10,
                   user: user0,
                   hidden: true)
+
+AdminUser.create!(email: 'admin@develoo.co', password: 'supertajnalozinka', password_confirmation: 'supertajnalozinka') if Rails.env.development?
 
 puts '!Database Seeded!'

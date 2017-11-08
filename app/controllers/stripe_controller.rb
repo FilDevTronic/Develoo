@@ -7,7 +7,7 @@ class StripeController < ApplicationController
     # To finish the OAuth flow, we exchange this code for an access token and stripe user id
     response = HTTParty.post("https://connect.stripe.com/oauth/token",
       :query => {
-        client_secret: ENV.fetch('STRIPE_CLIENT_SECRET'),
+        client_secret: ENV.fetch('SECRET_KEY'),
         code: code,
         grant_type: "authorization_code"
       }
@@ -15,13 +15,13 @@ class StripeController < ApplicationController
 
     if response.parsed_response.key?("error")
       # Something went wrong. E.g. the code expired
-      redirect_to pages_settings_url, notice: response.parsed_response["error_description"]
+      redirect_to '/pages/settings', notice: response.parsed_response["error_description"]
     else
       # Success! :party_parrot:
       current_user.stripe_user_id = response.parsed_response["stripe_user_id"]
       current_user.save
-      redirect_to pages_settings_url, notice: 'Successfully connected with Stripe!'
+      redirect_to '/pages/settings', notice: 'Successfully connected with Stripe!'
     end
   end
-  
+
 end
