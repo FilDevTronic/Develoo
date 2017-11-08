@@ -55,6 +55,7 @@ gem 'webpacker'
 gem 'activeadmin'
 # Use Stripe for payments
 gem 'stripe'
+gem 'httparty'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

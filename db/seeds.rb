@@ -10,66 +10,94 @@ Role.create(name: :admin)
 Role.create(name: :dev)
 Role.create(name: :client)
 
+AdminUser.create!(email: 'admin@develoo.co', password: 'supertajnalozinka', password_confirmation: 'supertajnalozinka') if Rails.env.development?
+
 user0 = User.create(alias: 'Admin_Auxfil',
                     name: 'Filip Maslovaric',
                     email: 'filip.maslovaric@gmail.com',
-                    password: 'develooadmin',
-                    password_confirmation: 'develooadmin')
+                    password: 'tajnalozinka',
+                    password_confirmation: 'tajnalozinka')
 user0.add_role(:admin)
 
-user1 = User.create(name: 'Milip Faslovaric',
-                    alias: 'Exaemo',
-								    email: 'exaemo@gmail.com',
+user1 = User.create(alias: 'BizzarroFil',
+                    name: 'Milip Faslovaric',
+								    email: 'dev@gmail.com',
 								    password: 'password1234',
 								    password_confirmation: 'password1234')
 user1.add_role(:dev)
 
-user2 = User.create(alias: 'Joe Develops',
+user2 = User.create(alias: 'Dev Joe',
                     name: 'Joe Bloggs',
-								    email: 'dev@gmail.com',
+								    email: 'dev1@gmail.com',
 								    password: 'password1234',
 								    password_confirmation: 'password1234')
 user2.add_role(:dev)
 
-user3 = User.create(alias: 'GoofyGoobah',
-                    name: 'Spongebob Squarepants',
-								    email: 'client@gmail.com',
+user3 = User.create(alias: 'Dev Schmoe',
+                    name: 'Schmoe Bloggs',
+								    email: 'dev2@gmail.com',
 								    password: 'password1234',
 								    password_confirmation: 'password1234')
-user3.add_role(:client)
+user3.add_role(:dev)
 
-user4 = User.create(alias: 'Alias',
+user4 = User.create(alias: 'GoofyGoobah',
+                    name: 'Spongebob Squarepants',
+								    email: 'dev3@gmail.com',
+								    password: 'password1234',
+								    password_confirmation: 'password1234')
+user4.add_role(:dev)
+
+user5 = User.create(alias: 'CodeSquid',
+                    name: 'Squidward',
+								    email: 'dev4@gmail.com',
+								    password: 'password1234',
+								    password_confirmation: 'password1234')
+user5.add_role(:client)
+
+user6 = User.create(alias: 'Alias',
                     name: 'Patrick Star',
 								    email: 'client1@gmail.com',
 								    password: 'password1234',
 								    password_confirmation: 'password1234')
-user4.add_role(:client)
+user6.add_role(:client)
+
+user7 = User.create(alias: 'DeepSpaceDiver',
+                    name: 'Sandy Cheeks',
+								    email: 'client2@gmail.com',
+								    password: 'password1234',
+								    password_confirmation: 'password1234')
+user7.add_role(:client)
 
 OrderStatus.create! id: 1, name: "In Progress"
 OrderStatus.create! id: 2, name: "Commissioned"
 OrderStatus.create! id: 3, name: "Paid"
 OrderStatus.create! id: 4, name: "Cancelled"
 
-1.upto(5) do |i|
-	Commission.create(title: "App #{i}",
-                    description: 'An App',
-								    price: 60 * i,
-								    user: user1)
-end
-1.upto(5) do |i|
-	Commission.create(title: "Website #{i}",
-                     description: 'A Website',
-								     price: 20 * i,
-								     user: user2)
-end
 
-1.upto(2) do |i|
-  Commission.create(title: "Hidden Item #{i}",
-                    description: "You can't see me",
-                    price: 10 * i,
-                    user: user0,
-                    hidden: true)
-end
+Commission.create(title: "App",
+                  description: 'An App',
+							    price: 60,
+							    user: user1)
+
+Commission.create(title: "Website",
+                   description: 'A Website',
+							     price: 20,
+							     user: user2)
+
+Commission.create(title: "Website",
+                  description: 'A Website',
+						      price: 40,
+						      user: user3)
+
+Commission.create(title: "Website",
+                  description: 'A Website',
+                  price: 30,
+                  user: user4)
+
+Commission.create(title: "Hidden Item",
+                  description: "You can't see me",
+                  price: 10,
+                  user: user0,
+                  hidden: true)
 
 puts '!Database Seeded!'
-AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?

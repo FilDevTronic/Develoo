@@ -1,0 +1,10 @@
+<div class="my-2">
+<%= form_with(url: '/charges', local: true) do |form| %>
+  <%= hidden_field_tag(:id, @commission.id) %>
+  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+            data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+            data-description="<%= @commission.title%> "
+            data-amount="<%= (@commission.price * 100).to_i %>"
+            data-locale="auto"></script>
+<% end %>
+</div>

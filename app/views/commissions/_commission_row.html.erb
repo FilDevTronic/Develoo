@@ -1,8 +1,8 @@
 <div class="mx-auto my-4">
   <div class="card" style="width: 15rem;">
-    <%= gravatar_image_tag(commission.user.email, alt: commission.user.alias, class: "card-img-top", gravatar: { secure: true, default: :identicon, size: 220 } ) %>
+    <%= gravatar_image_tag(commission.user.email, alt: commission.user.alias, class: "card-img-top", gravatar: { secure: true, default: :identicon, size: 220 }, href: commission ) %>
     <div class="card-body">
-      <h4 class="card-title"><%= commission.title %></h4>
+      <h4 class="card-title"><%= link_to commission.title, commission, class: "card-link" %></h4>
       <p class="card-text text-left">
         Developed by <%= link_to commission.user.alias, profile_path(commission.user) %>
         <hr>
@@ -13,9 +13,7 @@
       </p>
     </div>
     <div class="card-body">
-      <% if user_signed_in? %>
-        <%= link_to "More details", commission, class: "card-link" %>
-      <% else %>
+      <% if !user_signed_in? %>
         <p class="card-text">Sign <span><%= link_to "in", new_user_session_path , class: "card-link" %></span>/<span><%= link_to "up", new_user_registration_path , class: "card-link" %></span> to see details</p>
       <% end %>
       <% if user_signed_in? %>
