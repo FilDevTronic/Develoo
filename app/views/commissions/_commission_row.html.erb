@@ -13,16 +13,15 @@
       </p>
     </div>
     <div class="card-body">
-      <% if !user_signed_in? %>
+        <% if user_signed_in? %>
+          <% if current_user == commission.user or current_user.has_role? :admin %>
+            <div class="card-body">
+              <%= link_to 'Edit', edit_commission_path(commission), class: "btn btn-secondary" %>
+              <%= link_to 'Destroy', commission, method: :delete, data: { confirm: 'Are you sure?' }, class: "card-link btn btn-danger" %>
+            </div>
+          <% end %>
+      <% else %>
         <p class="card-text">Sign <span><%= link_to "in", new_user_session_path , class: "card-link" %></span>/<span><%= link_to "up", new_user_registration_path , class: "card-link" %></span> to see details</p>
-      <% end %>
-      <% if user_signed_in? %>
-        <% if current_user == commission.user or current_user.has_role? :admin %>
-          <div class="card-body">
-            <%= link_to 'Edit', edit_commission_path(commission), class: "btn btn-secondary" %>
-            <%= link_to 'Destroy', commission, method: :delete, data: { confirm: 'Are you sure?' }, class: "card-link btn btn-danger" %>
-          </div>
-        <% end %>
       <% end %>
     </div>
   </div>
