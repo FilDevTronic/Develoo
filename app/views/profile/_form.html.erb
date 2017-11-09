@@ -1,22 +1,63 @@
-<%= form_with(model: profile, local: true) do |form| %>
-  <% if profile.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
+<%= render 'shared/errors', object: profile %>
 
-      <ul>
-      <% profile.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
+<%= form_with(model: profile, local: true, multipart: true) do |form| %>
+
+  <h5>Profile description</h5>
+  <div class="form-group my-2 col-sm-12">
+    <%= form.label :bio, "Tell your future clients about you and what you offer" %>
+    <h5 class="small text-muted">What programming languages do you know? What sorts of web or software development are you offering? Do you have any links?</h5>
+    <%= form.text_area :bio, id: :profile_bio, rows: 5, data: {provide: "markdown"}, class: "form-control col-sm-6", placeholder: "Add it all in here! You can use Markdown."%>
+  </div>
+
+  <hr class="my-4">
+
+  <% if profile.image? %>
+      <h5> Current profile image </h5>
+      <div class="col-sm-6 my-2">
+        <%= image_tag profile.image.web.full.url, class: "img-fluid" %>
+        <br>
+        <%= form.check_box :remove_image %>
+        <%= form.label :remove_image, "Remove current image" %>
+      </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :bio %>
-    <%= form.text_area :bio, id: :profile_bio %>
+  <h5>Add profile image</h5>
+  <div class="form-group my-2 col-sm-6">
+    <%= form.label :image, "Add from file..." %>
+    <h5 class="small text-muted">Your profile image will default to an image from Gravatar if one is not added. Go to <%= link_to "Gravatar", 'https://en.gravatar.com/', class: "form-link" %> to learn more.</h5>
+    <h5 class="small text-muted">Accepted formats: jpg, jpeg, gif, png</h5>
+    <%= form.file_field :image, class: "form-control-file", placeholder: "" %>
+    <%= form.hidden_field :image_cache %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="form-group my-2 col-sm-6">
+    <%= form.label :image, "...Or, add via URL" %>
+    <%= form.text_field :remote_image_url, class: "form-control col-sm-4" %>
+    <%= form.hidden_field :image_cache %>
   </div>
+
+<br>
+
+  <h5> Add other images to profile </h5>
+  <h5 class="small text-muted">These will show up alongside your profile Bio section</h5>
+  <div class="form-group my-2 col-sm-6">
+    <%= form.label :attachments, "Add image file(s)" %><br>
+    <%= form.file_field :attachments, multiple: true %>
+  </div>
+
+  <% if profile.attachments? %>
+    <ul>
+      <% profile.attachments.each do |attachment| %>
+        <li><%= link_to(image_tag(attachment.thumb.url, alt: 'Image'), attachment.url, target: '_blank') %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+<hr class="my-2">
+
+  <div class="actions form-group my-4">
+    <%= form.submit "Update Profile", class: "btn btn-primary" %>
+    <%= link_to 'Back to Profile', profile_path, class: "btn btn-secondary"%>
+  </div>
+  <br>
 <% end %>

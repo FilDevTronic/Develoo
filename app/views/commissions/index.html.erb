@@ -5,7 +5,7 @@
   <% if current_user.has_any_role?(:admin, :dev) %>
     <% if current_user.stripe_user_id.nil? %>
       <h4 class="text-warning"> You must create a Stripe account before you can create and be paid for commissions </h4>
-      <%= link_to "Set up your payment", 'pages/settings' %>
+      <%= link_to "Set up your payment", 'pages/settings', class: "btn btn-outline-info" %>
     <% else %>
       <p><%= link_to 'New Commission', new_commission_path, class: "btn btn-primary" %></p>
     <% end %>

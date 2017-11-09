@@ -56,6 +56,12 @@ gem 'activeadmin'
 # Use Stripe for payments
 gem 'stripe'
 gem 'httparty'
+# Use Carrierwave and minimagick for uploads of images
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'file_validators'
+# Use fog-aws to use Amazon S3 for Carrierwave uploads for Heroku deployment
+gem "fog-aws"
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
