@@ -2,9 +2,10 @@
 <hr>
 <%= gravatar_image_tag(@profile.user.email, alt: @profile.user.alias, class: "img-fluid rounded", gravatar: { secure: true, default: :identicon, size: 200 } ) %>
 
-<p>
-  <%= @profile.bio %>
-</p>
+<img class="img-fluid>"><%= @profile.image %></img>
+
+
+<%= link_to(image_tag(@profile.image.thumb.url, alt: 'Image', class: "img-fluid"), @profile.image.url, target: '_blank') if @profile.image? %>
 
 <% unless current_user == @user %>
   <%= link_to 'Send message', new_message_path(to: @profile.user.id), class: 'btn btn-default btn-sm' %>

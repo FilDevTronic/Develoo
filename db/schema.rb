@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171109005135) do
+ActiveRecord::Schema.define(version: 20171109083519) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -116,6 +116,11 @@ ActiveRecord::Schema.define(version: 20171109005135) do
     t.text "bio"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "media_file_name"
+    t.string "media_content_type"
+    t.integer "media_file_size"
+    t.datetime "media_updated_at"
+    t.string "image"
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
