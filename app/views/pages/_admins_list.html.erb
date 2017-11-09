@@ -1,5 +1,5 @@
-<div class="container-fluid text-center">
-  <h4>Meet the Admins</h4>
+<div class="container-fluid text-center text-white">
+  <h4 class="text-white">Meet the Admins</h4>
   <div class="d-flex row">
     <% @profile.each do |profile| %>
       <% if profile.user.has_role? :admin %>

@@ -1,44 +1,52 @@
-<%= form_with(model: commission, local: true) do |form| %>
-  <% if commission.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(commission.errors.count, "error") %> prohibited this commission from being saved:</h2>
+<div class="text-white">
+  <%= form_with(model: commission, local: true) do |form| %>
+    <% if commission.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(commission.errors.count, "error") %> prohibited this commission from being saved:</h2>
 
-      <ul>
-      <% commission.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-  <div class="form-group">
-    <%= form.label :title %>
-    <%= form.text_field :title, id: :commission_title, class: "form-control col-sm-4" %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :description %>
-    <%= form.text_area :description, id: :commission_description, class: "form-control col-sm-4" %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :image %>
-    <% if commission.image? %>
-      <%= image_tag commission.image.web.preview.url %>
-      <div>
-        <%= label_tag :remove_image do %>
-          Remove image?
-          <%= form.check_box :remove_image %>
+        <ul>
+        <% commission.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
         <% end %>
+        </ul>
       </div>
     <% end %>
-    <%= form.file_field :image, class: "form-control-file" %>
-    <%= form.text_field :remote_image_url, class: "form-control col-sm-4", placeholder: "Upload via URL" %>
-  </div>
+    <div class="form-group">
+      <%= form.label :title %>
+      <p class="small text-white">This is the first thing people will see</p>
+      <%= form.text_field :title, id: :commission_title, class: "form-control col-sm-4", placeholder: "e.g. HTML5 Website..." %>
+    </div>
 
-  <div class="form-group">
-    <%= form.label :price %>
-    <%= form.text_field :price, id: :commission_price, class: "form-control col-sm-4" %>
-  </div>
+    <div class="form-group">
+      <%= form.label :description %>
+      <p class="small text-white">Give a brief description of the service you're offering. <br> Talk about your skills on your Profile instead.</p>
+      <%= form.text_area :description, id: :commission_description, class: "form-control col-sm-4", placeholder: "e.g. HTML5 Single page static website..." %>
+    </div>
 
-    <%= form.submit "Submit", class: "btn btn-primary" %>
-<% end %>
+    <div class="form-group">
+      <%= form.label :image %>
+      <p class="small text-white">Add a picture as an example</p>
+      <p class="small text-white">Either upload a file directly</p>
+      <% if commission.image? %>
+        <%= image_tag commission.image.web.preview.url %>
+        <div>
+          <%= label_tag :remove_image do %>
+            Remove image?
+            <%= form.check_box :remove_image %>
+          <% end %>
+        </div>
+      <% end %>
+      <%= form.file_field :image, class: "form-control-file" %>
+      <p class="small text-white my-1">Or</p>
+      <%= form.text_field :remote_image_url, class: "form-control col-sm-4", placeholder: "Upload via URL" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :price %>
+      <p class="small text-white">In dollars</p>
+      <%= form.text_field :price, id: :commission_price, class: "form-control col-sm-4", placeholder: "e.g. 199.95" %>
+    </div>
+
+      <%= form.submit "Submit", class: "btn btn-primary" %>
+  <% end %>
+</div>

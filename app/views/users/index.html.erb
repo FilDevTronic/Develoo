@@ -1,11 +1,13 @@
-<% page_header "Users" %>
+<h2 class="text-white">Users</h2>
 
 <%= will_paginate %>
 
-<ul>
-  <% @users.each do |user| %>
-  <%= render "user_row", user: user %>
-  <% end %>
-</ul>
+<div class="jumbotron bg-white">
+  <ul>
+    <% @users.each do |user| %>
+    <%= render "user_row", user: user %>
+    <% end %>
+  </ul>
+</div>
 
 <%= will_paginate %>

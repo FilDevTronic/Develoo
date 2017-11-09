@@ -1,27 +1,29 @@
-<% page_header "Conversation" %>
+<h2 class="text-white">Conversation</h2>
 
-<p>Chatting with
-  <%= render 'conversations/participants', conversation: @conversation %>
-</p>
+<div class="text-white">
+  <p>Chatting with
+    <%= render 'conversations/participants', conversation: @conversation %>
+  </p>
 
-<div class="panel panel-default">
-  <div class="panel-heading display-4">
-    <%= @conversation.subject %>
-  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading display-4">
+      <%= @conversation.subject %>
+    </div>
 
-  <div class="panel-body">
-    <div class="messages container">
-      <p><% @conversation.receipts_for(current_user).each do |receipt| %>
-        <% message = receipt.message %>
+    <div class="panel-body">
+      <div class="messages container">
+        <p><% @conversation.receipts_for(current_user).each do |receipt| %>
+          <% message = receipt.message %>
 
-        <p class="badge badge-pill badge-info"><%= message.body %></p>
-        <p class="font-weight-light">
-        <%= message.sender.name %> -
-        <%= message.created_at.strftime("%H:%M, %-d %b %Y" ) %>
-        </p>
-        <hr>
-      <% end %>
-    </p>
+          <p class="badge badge-pill badge-dark"><%= message.body %></p>
+          <p class="font-weight-light">
+          <%= message.sender.name %> -
+          <%= message.created_at.strftime("%H:%M, %-d %b %Y" ) %>
+          </p>
+          <hr>
+        <% end %>
+      </p>
+      </div>
     </div>
   </div>
 </div>

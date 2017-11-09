@@ -1,38 +1,40 @@
-<h2>Sign in</h2>
+<div class="text-white">
+  <h2>Sign in</h2>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'form-horizontal'}) do |f| %>
-<div class="form-group">
-    <%= f.label :email, "E-mail", class: "col-sm-4 control-label" %>
-    <div class="col-sm-4">
-        <%= f.email_field :email, autofocus: true , class: "form-control" %>
-    </div>
-</div>
-
-<div class="form-group">
-    <%= f.label :password, "Password", class: "col-sm-4 control-label" %>
-    <div class="col-sm-4">
-        <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
-    </div>
-</div>
-
-<%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-  <div class="col-sm-4">
-      <%= link_to "Forgot your password?", new_password_path(resource_name) %><br />
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'form-horizontal'}) do |f| %>
+  <div class="form-group">
+      <%= f.label :email, "E-mail", class: "col-sm-4 control-label" %>
+      <div class="col-sm-4">
+          <%= f.email_field :email, autofocus: true , class: "form-control" %>
+      </div>
   </div>
-<% end -%>
 
-<% if devise_mapping.rememberable? -%>
-<div class="form-group my-4">
-    <div class="col-sm-4 col-sm-offset-2">
-        <%= f.check_box :remember_me %> <%= f.label :remember_me %>
+  <div class="form-group">
+      <%= f.label :password, "Password", class: "col-sm-4 control-label" %>
+      <div class="col-sm-4">
+          <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
+      </div>
+  </div>
+
+  <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+    <div class="col-sm-4">
+        <%= link_to "Forgot your password?", new_password_path(resource_name) %><br />
     </div>
-</div>
-<% end -%>
+  <% end -%>
 
-<div class="form-group">
-    <div class="col-sm-4 col-sm-offset-2">
-        <%= f.submit "Sign in", class: 'btn btn-primary' %>
-    </div>
-</div>
+  <% if devise_mapping.rememberable? -%>
+  <div class="form-group my-4">
+      <div class="col-sm-4 col-sm-offset-2">
+          <%= f.check_box :remember_me %> <%= f.label :remember_me %>
+      </div>
+  </div>
+  <% end -%>
 
-<% end %>
+  <div class="form-group">
+      <div class="col-sm-4 col-sm-offset-2">
+          <%= f.submit "Sign in", class: 'btn btn-primary' %>
+      </div>
+  </div>
+
+  <% end %>
+</div>

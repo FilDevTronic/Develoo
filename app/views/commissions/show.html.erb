@@ -1,38 +1,40 @@
-<p>
-  <%= image_tag(@commission.image.web.preview.url, alt: 'Image') if @commission.image? %>
-<p>
-  <strong>Developer:</strong>
-  <%= @commission.user.alias %>
-</p>
+<div class="text-white">
+  <p>
+    <%= image_tag(@commission.image.web.preview.url, alt: 'Image') if @commission.image? %>
+  <p>
+    <strong>Developer:</strong>
+    <%= @commission.user.alias %>
+  </p>
 
-<p>
-  <strong>Commission:</strong>
-  <%= @commission.title %>
-</p>
+  <p>
+    <strong>Commission:</strong>
+    <%= @commission.title %>
+  </p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @commission.description %>
-</p>
+  <p>
+    <strong>Description:</strong>
+    <%= @commission.description %>
+  </p>
 
-<hr>
-<div class="input-group d-flex justify-content-between">
-    <% if user_signed_in? && current_user != @commission.user %>
-      <div class="input-group-btn">
-        <%= render 'charges/single_purchase' %>
-      </div>
+  <hr>
+  <div class="input-group d-flex justify-content-between">
+      <% if user_signed_in? && current_user != @commission.user %>
+        <div class="input-group-btn">
+          <%= render 'charges/single_purchase' %>
+        </div>
+      <% end %>
+
+    <h4 class="text-right">Price: <span class="text-warning"><%= number_to_currency(@commission.price) %></span></h4>
+  </div>
+
+  <div class=" btn-group my-2">
+    <% if user_signed_in? %>
+      <% if current_user == @commission.user or current_user.has_role? :admin %>
+          <%= link_to 'Edit', edit_commission_path(@commission), class: "btn btn-small btn-secondary" %>
+      <% end %>
+    <% else %>
+      <p class="small text-info">Please sign up or sign in to make a purchase</p>
     <% end %>
-
-  <h4 class="text-right">Price: <span style="color: green"><%= number_to_currency(@commission.price) %></span></h4>
-</div>
-
-<div class="my-2">
-  <% if user_signed_in? %>
-    <% if current_user == @commission.user or current_user.has_role? :admin %>
-        <%= link_to 'Edit', edit_commission_path(@commission) %> |
-    <% end %>
-  <% else %>
-    <p class="small text-info">Please sign up or sign in to make a purchase</p>
-  <% end %>
-  <%= link_to 'Back', commissions_path %>
+    <%= link_to 'Back', commissions_path, class: "btn btn-small btn-secondary" %>
+  </div>
 </div>
