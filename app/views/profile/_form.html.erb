@@ -1,4 +1,5 @@
 <%= render 'shared/errors', object: profile %>
+
 <%= form_with(model: profile, local: true, multipart: true) do |form| %>
 
   <h5>Profile description</h5>
@@ -43,6 +44,14 @@
     <%= form.label :attachments, "Add image file(s)" %><br>
     <%= form.file_field :attachments, multiple: true %>
   </div>
+
+  <% if profile.attachments? %>
+    <ul>
+      <% profile.attachments.each do |attachment| %>
+        <li><%= link_to(image_tag(attachment.thumb.url, alt: 'Image'), attachment.url, target: '_blank') %></li>
+      <% end %>
+    </ul>
+  <% end %>
 
 <hr class="my-2">
 

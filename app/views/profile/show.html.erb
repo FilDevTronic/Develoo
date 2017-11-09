@@ -1,16 +1,24 @@
 <% page_header @profile.user.alias %>
 <hr>
-<%= gravatar_image_tag(@profile.user.email, alt: @profile.user.alias, class: "img-fluid rounded", gravatar: { secure: true, default: :identicon, size: 200 } ) %>
+<div class="d-flex flex-row flex-wrap">
+  <div class="col-lg-6 col-md-4 col-sm-12">
+    <% if @profile.image? %>
+      <%= link_to(image_tag(@profile.image.web.full.url, alt: 'Image', class: "img-fluid"), @profile.image.url, target: '_blank') %>
+    <% else %>
+      <%= gravatar_image_tag(@profile.user.email, alt: @profile.user.alias, class: "img-fluid", gravatar: { secure: true, default: :identicon, size: 500 } ) %>
+    <% end %>
+    <div class="btn-group text-center my-2">
+      <% unless current_user == @user %>
+        <%= link_to 'Send message', new_message_path(to: @profile.user.id), class: 'btn btn-outline-primary btn-sm' %>
+      <% end %>
 
-<img class="img-fluid>"><%= @profile.image %></img>
+      <% if current_user == @profile.user %>
+      <%= link_to 'Edit Your Profile', edit_profile_path(@profile), class: 'btn btn-outline-primary btn-sm' %>
+      <% end %>
+    </div>
+  </div>
 
-
-<%= link_to(image_tag(@profile.image.thumb.url, alt: 'Image', class: "img-fluid"), @profile.image.url, target: '_blank') if @profile.image? %>
-
-<% unless current_user == @user %>
-  <%= link_to 'Send message', new_message_path(to: @profile.user.id), class: 'btn btn-default btn-sm' %>
-<% end %>
-
-<% if current_user == @profile.user %>
-<%= link_to 'Edit Your Profile', edit_profile_path(@profile) %>
-<% end %>
+  <div class="col-lg-6 col-md-8 col-sm-12">
+    <%= @profile.bio %>
+  </div>
+</div>
