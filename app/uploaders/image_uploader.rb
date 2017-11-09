@@ -53,7 +53,7 @@ class ImageUploader < CarrierWave::Uploader::Base
       process resize_to_fit: [1024, 768]
     end
     version :display do
-      process resize_to_fill: [310,310]
+      process resize_to_fill: [310, 310]
     end
   end
 

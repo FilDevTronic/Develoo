@@ -3,8 +3,7 @@ class PagesController < ApplicationController
     @profile = Profile.all
   end
 
-  def contact
-  end
+  def contact; end
 
   def faq; end
 

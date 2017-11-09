@@ -15,7 +15,7 @@ ActiveAdmin.register User do
   permit_params :alias, :name, :email, :password, :password_confirmation, role_ids: []
 
   form do |f|
-    f.inputs "User Details" do
+    f.inputs 'User Details' do
       f.input :alias
       f.input :name
       f.input :email
@@ -29,8 +29,8 @@ ActiveAdmin.register User do
   controller do
     def update
       if params[:user][:password].blank?
-        params[:user].delete "password"
-        params[:user].delete "password_confirmation"
+        params[:user].delete 'password'
+        params[:user].delete 'password_confirmation'
       end
 
       super
