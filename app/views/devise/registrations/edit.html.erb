@@ -44,6 +44,20 @@
   </div>
 </div>
 
+<% if current_user.has_any_role? :dev, :client %>
+  <div class: "col-sm-4">
+     <%= f.label :role_ids, "Change account type", class: "col-sm-4 control-label" %>
+  </div>
+  <div class="col-sm-4">
+    <%= f.collection_radio_buttons(:role_ids, Role.where.not(name: :admin), :id, :name ) do |button| %>
+      <%= button.label(class: "btn btn-secondary") do %>
+        <%= button.radio_button %>
+        <%= button.text.capitalize %>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>
+
 <br>
 
 <div class="form-group">
@@ -62,7 +76,7 @@
   </div>
 </div>
 <% end %>
-
+<hr class="my-2">
 <h5>Cancel my account</h5>
 <div class="container">
   <p>Develoo not for you? No problem. Just click the link below and your account and all your commission listing will be deleted post haste.</p>

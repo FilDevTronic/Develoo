@@ -1,0 +1,15 @@
+<li>
+  <% if user.profile.image? %>
+    <%= link_to(image_tag(user.profile.image.web.thumb.url, alt: 'Image', class: "img-fluid"), user.profile.image.url, target: '_blank') %>
+  <% else %>
+    <%= gravatar_image_tag(user.profile.user.email, alt: user.profile.user.alias, class: "img-fluid", gravatar: { secure: true, default: :identicon, size: 50 } ) %>
+  <% end %>
+  <strong><%= link_to user.alias, user.profile %></strong>
+    <% unless current_user == user %>
+      <%= link_to 'Send message', new_message_path(to: user.id), class: 'btn btn-outline-primary btn-sm' %>
+    <% end %>
+    <% if current_user or current_user.has_role? :admin %>
+      <%= link_to 'Edit Profile', edit_profile_path(user.profile), class: "btn btn-outline-primary btn-sm" %>
+    <% end %>
+</li>
+<br>

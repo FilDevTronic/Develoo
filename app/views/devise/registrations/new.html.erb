@@ -58,7 +58,6 @@
      <%= f.label :role_ids, "You are signing up as a:", class: "col-sm-4 control-label" %>
   </div>
   <div class="col-sm-4">
-    <% count = 0 %>
     <%= f.collection_radio_buttons(:role_ids, Role.where.not(name: :admin), :id, :name ) do |button| %>
       <%= button.label(class: "btn btn-secondary") do %>
         <%= button.radio_button %>
