@@ -22,8 +22,8 @@
 </div>
 </div>
 
-<div class="container-fluid text-center">
-  <div class="d-flex row">
+<div class="text-center my-4">
+  <div class="card-group">
     <% @commissions.each do |commission| %>
       <%= render "commission_row", commission: commission %>
     <% end %>
