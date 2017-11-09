@@ -1,0 +1,27 @@
+<h1>SMASH THAT MF SUBSCRIBE BUTTON</h1>
+
+<%= form_with(url: support_url, local: true) do |form| %>
+
+<% if @errors.present? %>
+  <div class="errors" >
+    <% @errors.each do |error| %>
+      <%= error %><br>
+    <% end %>
+  </div>
+<% end %>
+
+<hr>
+  <div>
+    <p><%= form.label 'Email: ' %></p>
+    <p><%= form.email_field :email %></p>
+  </div>
+  <div>
+    <p><%= form.label 'Message: ' %></p>
+    <p><%= form.text_area :message %></p>
+  </div>
+  <div>
+    <%= form.submit 'Submit' %>
+  </div>
+<hr>
+
+<% end %>

@@ -1,1 +1,30 @@
 <% page_header "Contact Us" %>
+<div class="jumbotron-fluid">
+  <h4>Questions? Concerns? Shoot us an e-mail</h4>
+
+  <%= form_with(url: pages_create_url, local: true) do |form| %>
+
+  <% if @errors.present? %>
+    <div class="errors" >
+      <% @errors.each do |error| %>
+        <%= error %><br>
+      <% end %>
+    </div>
+  <% end %>
+
+  <hr>
+    <div>
+      <p><%= form.label 'Email: ' %></p>
+      <p><%= form.email_field :email %></p>
+    </div>
+    <div>
+      <p><%= form.label 'Message: ' %></p>
+      <p><%= form.text_area :message %></p>
+    </div>
+    <div>
+      <%= form.submit 'Submit', class: "btn btn-primary" %>
+    </div>
+  <hr>
+
+  <% end %>
+</div>

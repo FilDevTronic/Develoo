@@ -9,7 +9,9 @@ Rails.application.routes.draw do
 
   get 'pages/landing', as: 'welcome'
 
-  get 'pages/contact', as: 'contact'
+  get '/pages/contact', to: 'pages#contact', as: 'contact'
+
+  post '/pages/create', to: 'pages#create'
 
   get 'pages/faq', as: 'faq'
 
