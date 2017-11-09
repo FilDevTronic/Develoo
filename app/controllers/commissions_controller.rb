@@ -7,13 +7,11 @@ class CommissionsController < ApplicationController
   def index
     @commissions = Commission.active
     @commissions = Commission.search_by_description(params[:search])
-    @order_item = current_order.order_items.new
   end
 
   # GET /commissions/1
   # GET /commissions/1.json
   def show
-    @order_item = current_order.order_items.new
   end
 
   # GET /commissions/new

@@ -66,12 +66,6 @@ user7 = User.create(alias: 'DeepSpaceDiver',
 								    password_confirmation: 'password1234')
 user7.add_role(:client)
 
-OrderStatus.create! id: 1, name: "In Progress"
-OrderStatus.create! id: 2, name: "Commissioned"
-OrderStatus.create! id: 3, name: "Paid"
-OrderStatus.create! id: 4, name: "Cancelled"
-
-
 Commission.create!(title: "App",
                   description: 'An App',
 							    price: 60,

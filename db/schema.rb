@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171108175407) do
+ActiveRecord::Schema.define(version: 20171109005135) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -111,34 +111,6 @@ ActiveRecord::Schema.define(version: 20171108175407) do
     t.index ["receiver_id", "receiver_type"], name: "index_mailboxer_receipts_on_receiver_id_and_receiver_type"
   end
 
-  create_table "order_items", force: :cascade do |t|
-    t.bigint "commission_id"
-    t.bigint "order_id"
-    t.decimal "unit_price", precision: 8, scale: 2
-    t.integer "quantity"
-    t.decimal "total_price", precision: 8, scale: 2
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["commission_id"], name: "index_order_items_on_commission_id"
-    t.index ["order_id"], name: "index_order_items_on_order_id"
-  end
-
-  create_table "order_statuses", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "orders", force: :cascade do |t|
-    t.decimal "subtotal", precision: 12, scale: 3
-    t.decimal "tax", precision: 12, scale: 3
-    t.decimal "total", precision: 12, scale: 3
-    t.bigint "order_status_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["order_status_id"], name: "index_orders_on_order_status_id"
-  end
-
   create_table "profiles", force: :cascade do |t|
     t.bigint "user_id"
     t.text "bio"
@@ -156,14 +128,6 @@ ActiveRecord::Schema.define(version: 20171108175407) do
     t.index ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"
     t.index ["name"], name: "index_roles_on_name"
     t.index ["resource_type", "resource_id"], name: "index_roles_on_resource_type_and_resource_id"
-  end
-
-  create_table "user_stories", force: :cascade do |t|
-    t.string "as_a"
-    t.string "isbat"
-    t.string "so_that"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -198,8 +162,5 @@ ActiveRecord::Schema.define(version: 20171108175407) do
   add_foreign_key "mailboxer_conversation_opt_outs", "mailboxer_conversations", column: "conversation_id", name: "mb_opt_outs_on_conversations_id"
   add_foreign_key "mailboxer_notifications", "mailboxer_conversations", column: "conversation_id", name: "notifications_on_conversation_id"
   add_foreign_key "mailboxer_receipts", "mailboxer_notifications", column: "notification_id", name: "receipts_on_notification_id"
-  add_foreign_key "order_items", "commissions"
-  add_foreign_key "order_items", "orders"
-  add_foreign_key "orders", "order_statuses"
   add_foreign_key "profiles", "users"
 end
