@@ -14,7 +14,7 @@
   <% if profile.image? %>
       <h5> Current profile image </h5>
       <div class="col-sm-6 my-2">
-        <%= image_tag profile.image.thumb.url, class: "img-fluid" %>
+        <%= image_tag profile.image.web.full.url, class: "img-fluid" %>
         <br>
         <%= form.check_box :remove_image %>
         <%= form.label :remove_image, "Remove current image" %>
