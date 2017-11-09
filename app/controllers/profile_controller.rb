@@ -1,6 +1,6 @@
 class ProfileController < ApplicationController
-  before_action :authenticate_user!, only: [:edit, :update, :destroy]
-  before_action :set_profile, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: %i[edit update destroy]
+  before_action :set_profile, only: %i[show edit update destroy]
 
   # GET /profile
   # GET /profile.json
@@ -10,12 +10,10 @@ class ProfileController < ApplicationController
 
   # GET /profile/1
   # GET /profile/1.json
-  def show
-  end
+  def show; end
 
   # GET /profile/1/edit
-  def edit
-  end
+  def edit; end
 
   # PATCH/PUT /profile/1
   # PATCH/PUT /profile/1.json
@@ -42,13 +40,14 @@ class ProfileController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_profile
-      @profile = Profile.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def profile_params
-      params.require(:profile).permit(:user_id, :bio, :image, :image_cache, :remove_image, :remote_image_url, attachments: [])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_profile
+    @profile = Profile.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def profile_params
+    params.require(:profile).permit(:user_id, :bio, :image, :image_cache, :remove_image, :remote_image_url, attachments: [])
+  end
 end

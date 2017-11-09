@@ -1,11 +1,9 @@
 Rails.application.routes.draw do
-
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
   devise_for :users, controllers: { sessions: 'users/sessions',
-                                    registrations: 'users/registrations'
-                                  }
+                                    registrations: 'users/registrations' }
 
   root 'pages#landing'
 
@@ -23,19 +21,17 @@ Rails.application.routes.draw do
 
   post 'charges', to: 'charges#create'
 
-  resources :users, only: [ :index ]
+  resources :users, only: [:index]
 
-  resources :profile, only: [ :index,
-                              :edit,
-                              :update,
-                              :show,
-                              :destroy
-                            ]
+  resources :profile, only: %i[index
+                               edit
+                               update
+                               show
+                               destroy]
 
-  resources :conversations, only: [ :index,
-                                    :show,
-                                    :destroy
-                                  ] do
+  resources :conversations, only: %i[index
+                                     show
+                                     destroy] do
 
     collection do
       delete :empty_trash
@@ -46,12 +42,10 @@ Rails.application.routes.draw do
       post :reply
       post :mark_as_read
     end
-
   end
 
-  resources :messages, only: [ :new,
-                               :create
-                             ]
+  resources :messages, only: %i[new
+                                create]
 
   resources :commissions
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

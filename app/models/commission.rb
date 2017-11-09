@@ -4,10 +4,9 @@ class Commission < ApplicationRecord
 
   def self.search_by_description(search)
     if search
-      where("description ILIKE ? AND hidden = false ", "%#{search}%")
+      where('description ILIKE ? AND hidden = false ', "%#{search}%")
     else
       active
     end
   end
-
 end

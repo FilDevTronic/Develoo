@@ -1,5 +1,4 @@
 class ImageUploader < CarrierWave::Uploader::Base
-
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
@@ -33,33 +32,32 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   version :print do
     version :thumb do
-      process :resize_to_fit => [32, 32]
+      process resize_to_fit: [32, 32]
     end
     version :preview do
-      process :resize_to_fit => [256, 256]
+      process resize_to_fit: [256, 256]
     end
     version :full do
-      process :resize_to_fit => [2048, 2048]
+      process resize_to_fit: [2048, 2048]
     end
   end
 
   version :web do
     version :thumb do
-      process :resize_to_fit => [32, 32]
+      process resize_to_fit: [32, 32]
     end
     version :preview do
-      process :resize_to_fit => [128, 128]
+      process resize_to_fit: [128, 128]
     end
     version :full do
-      process :resize_to_fit => [1024, 768]
+      process resize_to_fit: [1024, 768]
     end
   end
-
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
   def extension_whitelist
-    %w(jpg jpeg gif png)
+    %w[jpg jpeg gif png]
   end
 
   def content_type_whitelist
@@ -71,5 +69,4 @@ class ImageUploader < CarrierWave::Uploader::Base
   # def filename
   #   "something.jpg" if original_filename
   # end
-
 end

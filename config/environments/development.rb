@@ -32,12 +32,12 @@ Rails.application.configure do
   config.action_mailer.perform_caching = false
 
   # ActionMailer settings for mailgun
-  config.action_mailer.default_url_options = { :host => 'localhost', :posrt => 3000 }
+  config.action_mailer.default_url_options = { host: 'localhost', posrt: 3000 }
 
   config.action_mailer.delivery_method = :mailgun
   config.action_mailer.mailgun_settings = {
-          api_key: ENV['MAILGUN_API_KEY'],
-          domain: ENV['MAILGUN_DOMAIN']
+    api_key: ENV['MAILGUN_API_KEY'],
+    domain: ENV['MAILGUN_DOMAIN']
   }
 
   # Print deprecation notices to the Rails logger.

@@ -1,1 +1,1 @@
-json.partial! "commissions/commission", commission: @commission
+json.partial! 'commissions/commission', commission: @commission

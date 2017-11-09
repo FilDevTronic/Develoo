@@ -1,6 +1,6 @@
 class CommissionsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_commission, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: %i[index show]
+  before_action :set_commission, only: %i[show edit update destroy]
 
   # GET /commissions
   # GET /commissions.json
@@ -11,8 +11,7 @@ class CommissionsController < ApplicationController
 
   # GET /commissions/1
   # GET /commissions/1.json
-  def show
-  end
+  def show; end
 
   # GET /commissions/new
   def new
@@ -20,8 +19,7 @@ class CommissionsController < ApplicationController
   end
 
   # GET /commissions/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /commissions
   # POST /commissions.json
@@ -65,13 +63,14 @@ class CommissionsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_commission
-      @commission = Commission.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def commission_params
-      params.require(:commission).permit(:user_id, :title, :description, :price, :commission_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_commission
+    @commission = Commission.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def commission_params
+    params.require(:commission).permit(:user_id, :title, :description, :price, :commission_id)
+  end
 end

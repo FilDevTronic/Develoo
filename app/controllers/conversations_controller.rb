@@ -1,21 +1,20 @@
 class ConversationsController < ApplicationController
   before_action :authenticate_user!
   before_action :get_mailbox
-  before_action :get_conversation, except: [:index, :empty_trash]
+  before_action :get_conversation, except: %i[index empty_trash]
   before_action :get_box, only: [:index]
 
   def index
-    if @box.eql? "inbox"
-      @conversations = @mailbox.inbox
-    elsif @box.eql? "sent"
-      @conversations = @mailbox.sentbox
-    else
-      @conversations = @mailbox.trash
-    end
+    @conversations = if @box.eql? 'inbox'
+                       @mailbox.inbox
+                     elsif @box.eql? 'sent'
+                       @mailbox.sentbox
+                     else
+                       @mailbox.trash
+                     end
 
     @conversations = @conversations.paginate(page: params[:page], per_page: 10)
   end
-
 
   def show
     @conversation.mark_as_read(current_user)
@@ -60,7 +59,7 @@ class ConversationsController < ApplicationController
   end
 
   def get_box
-    if params[:box].blank? or !["inbox","sent","trash"].include?(params[:box])
+    if params[:box].blank? || !%w[inbox sent trash].include?(params[:box])
       params[:box] = 'inbox'
     end
     @box = params[:box]
