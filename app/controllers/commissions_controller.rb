@@ -5,7 +5,7 @@ class CommissionsController < ApplicationController
   # GET /commissions
   # GET /commissions.json
   def index
-    @commissions = Commission.active
+    @commissions = Commission.active.order('created_at DESC')
     @commissions = Commission.search_by_description(params[:search])
   end
 
@@ -71,6 +71,6 @@ class CommissionsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def commission_params
-    params.require(:commission).permit(:user_id, :title, :description, :price, :commission_id)
+    params.require(:commission).permit(:user_id, :title, :description, :price, :commission_id, :image, :remove_image)
   end
 end

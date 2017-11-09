@@ -10,23 +10,35 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
+  <div class="form-group">
     <%= form.label :title %>
-    <%= form.text_field :title, id: :commission_title %>
+    <%= form.text_field :title, id: :commission_title, class: "form-control col-sm-4" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :description %>
-    <%= form.text_area :description, id: :commission_description %>
+    <%= form.text_area :description, id: :commission_description, class: "form-control col-sm-4" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
+    <%= form.label :image %>
+    <% if commission.image? %>
+      <%= image_tag commission.image.web.preview.url %>
+      <div>
+        <%= label_tag :remove_image do %>
+          Remove image?
+          <%= form.check_box :remove_image %>
+        <% end %>
+      </div>
+    <% end %>
+    <%= form.file_field :image, class: "form-control-file" %>
+    <%= form.text_field :remote_image_url, class: "form-control col-sm-4", placeholder: "Upload via URL" %>
+  </div>
+
+  <div class="form-group">
     <%= form.label :price %>
-    <%= form.text_field :price, id: :commission_price %>
+    <%= form.text_field :price, id: :commission_price, class: "form-control col-sm-4" %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+    <%= form.submit "Submit", class: "btn btn-primary" %>
 <% end %>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+<url>
+  <loc>http://www.develoo.io/</loc>
+  <changefreq>hourly</changefreq>
+</url>
+<url>
+  <loc>http://www.develoo.io/pages/faq</loc>
+  <changefreq>hourly</changefreq>
+</url>
+<url>
+  <loc>http://www.develoo.io/pages/contact</loc>
+  <changefreq>hourly</changefreq>
+</url>
+<url>
+  <loc>http://www.develoo.io/commissions</loc>
+  <changefreq>hourly</changefreq>
+</url>
+<url>
+  <loc>http://www.develoo.io/users/sign_in</loc>
+  <changefreq>hourly</changefreq>
+</url>
+<url>
+  <loc>http://www.develoo.io/users/sign_up</loc>
+  <changefreq>hourly</changefreq>
+</url>
+<url>
+  <loc>http://www.develoo.io/profile/2</loc>
+  <changefreq>hourly</changefreq>
+</url>
+<url>
+  <loc>http://www.develoo.io/profile/3</loc>
+  <changefreq>hourly</changefreq>
+</url>
+<url>
+  <loc>http://www.develoo.io/profile/4</loc>
+  <changefreq>hourly</changefreq>
+</url>
+<url>
+  <loc>http://www.develoo.io/profile/5</loc>
+  <changefreq>hourly</changefreq>
+</url>
+<url>
+  <loc>http://www.develoo.io/profile/1</loc>
+  <changefreq>hourly</changefreq>
+</url>
+<url>
+  <loc>http://www.develoo.io/commissions/1</loc>
+  <changefreq>hourly</changefreq>
+</url>
+<url>
+  <loc>http://www.develoo.io/commissions/2</loc>
+  <changefreq>hourly</changefreq>
+</url>
+<url>
+  <loc>http://www.develoo.io/commissions/3</loc>
+  <changefreq>hourly</changefreq>
+</url>
+<url>
+  <loc>http://www.develoo.io/commissions/4</loc>
+  <changefreq>hourly</changefreq>
+</url>
+<url>
+  <loc>http://www.develoo.io/users/password/new</loc>
+  <changefreq>hourly</changefreq>
+</url>
+</urlset>

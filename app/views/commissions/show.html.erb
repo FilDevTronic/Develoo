@@ -1,4 +1,6 @@
 <p>
+  <%= image_tag(@commission.image.web.preview.url, alt: 'Image') if @commission.image? %>
+<p>
   <strong>Developer:</strong>
   <%= @commission.user.alias %>
 </p>
