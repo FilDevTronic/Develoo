@@ -31,7 +31,7 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = false
 
-  # ActionMailer settings
+  # ActionMailer settings for mailgun
   config.action_mailer.default_url_options = { :host => 'localhost', :posrt => 3000 }
 
   config.action_mailer.delivery_method = :mailgun
