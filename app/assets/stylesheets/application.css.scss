@@ -14,6 +14,13 @@ body {
   margin: 0;
 }
 
+.content {
+  min-height: calc(100vh - 130px);
+}
+.footer {
+  height: 50px;
+}
+
 .alert-notice {
   @extend .alert-success;
 }
