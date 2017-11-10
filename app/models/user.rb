@@ -8,6 +8,8 @@ class User < ApplicationRecord
 
   validates :alias, presence: true
 
+  validates :role_ids, presence: true
+
   after_create :create_profile
 
   has_one :profile, dependent: :destroy
