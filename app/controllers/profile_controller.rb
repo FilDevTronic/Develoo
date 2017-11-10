@@ -10,7 +10,8 @@ class ProfileController < ApplicationController
 
   # GET /profile/1
   # GET /profile/1.json
-  def show; end
+  def show
+  end
 
   # GET /profile/1/edit
   def edit; end
