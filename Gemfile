@@ -62,6 +62,7 @@ gem 'file_validators'
 gem 'mini_magick'
 # Use fog-aws to use Amazon S3 for Carrierwave uploads for Heroku deployment
 gem 'fog-aws'
+gem 'rails_12factor', group: :production
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
